@@ -22,7 +22,7 @@ let editFlag = false;
 let editID = "";
 
 // State constant
-let active = true;
+let state = "active";
 
 // Event listeners
 form.addEventListener('submit', addItem);
@@ -35,7 +35,9 @@ completedBtn.addEventListener('click', completedFilter);
 
 toggleStateBtn.addEventListener('click', completedFilter);
 
-switchModeBtn.addEventListener('click', switchMode)
+switchModeBtn.addEventListener('click', switchMode);
+
+toggleStateBtn.addEventListener('click', toggleState);
 // Functions
 // add item to list
 function addItem(e) {
@@ -52,7 +54,8 @@ function addItem(e) {
         const attr = document.createAttribute('data-id');
         attr.value = id;
         element.setAttributeNode(attr);
-        element.innerHTML = `<p class="title">${value}</p>
+        element.innerHTML = `<button type="button" class="toggle-state-btn"><img src="https://img.icons8.com/ios/50/000000/checked-2--v3.png"/></button>
+        <p class="title">${value}</p>
         <div class="btn-container">
             <button type="button" class="edit-btn btn">
                 <i class="fas fa-edit"></i>
@@ -61,8 +64,11 @@ function addItem(e) {
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
             </button>
         </div>`;
+        let state = "active";
         const deleteBtn = element.querySelector('.delete-btn');
         const editBtn = element.querySelector('.edit-btn');
+        const toggleStateBtn = document.querySelector('.toggle-state-btn');
+        toggleStateBtn.addEventListener('click', toggleItemState);
         deleteBtn.addEventListener('click', deleteItem);
         editBtn.addEventListener('click', editItem);
         // append child (add new todo (element) to container/list)
@@ -155,8 +161,9 @@ function switchMode () {
     if (mode === 'light') {
         switchModeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"><path fill="#FFF" fill-rule="evenodd" d="M13 21a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-5.657-2.343a1 1 0 010 1.414l-2.121 2.121a1 1 0 01-1.414-1.414l2.12-2.121a1 1 0 011.415 0zm12.728 0l2.121 2.121a1 1 0 01-1.414 1.414l-2.121-2.12a1 1 0 011.414-1.415zM13 8a5 5 0 110 10 5 5 0 010-10zm12 4a1 1 0 110 2h-3a1 1 0 110-2h3zM4 12a1 1 0 110 2H1a1 1 0 110-2h3zm18.192-8.192a1 1 0 010 1.414l-2.12 2.121a1 1 0 01-1.415-1.414l2.121-2.121a1 1 0 011.414 0zm-16.97 0l2.121 2.12A1 1 0 015.93 7.344L3.808 5.222a1 1 0 011.414-1.414zM13 0a1 1 0 011 1v3a1 1 0 11-2 0V1a1 1 0 011-1z"/></svg>`;
         mode = 'dark';
+        // change class of bg-img to show correct bg img
     }
-    else if (mode = 'dark') {
+    else if (mode === 'dark') {
         switchModeBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"><path fill="#FFF" fill-rule="evenodd" d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z"/></svg>`;
         mode = 'light';
         // change class of bg-img to show correct bg img
@@ -167,8 +174,24 @@ function switchMode () {
    
 }
 // toggle todo icon state // not working
-function setState () {
-
+function toggleState () {
+    if (state === 'active') {
+        toggleStateBtn.innerHTML = `<img src="https://img.icons8.com/ios/50/000000/checked-2--v1.png"/>`;
+        state = 'completed';
+        // add class to title so text effects apply
+    }
+    else if (state === 'completed') {
+        toggleStateBtn.innerHTML = `<img src="https://img.icons8.com/ios/50/000000/checked-2--v3.png"/>`;
+        state = 'active';
+        // remove class to title so text effects apply
+    }
+    else {
+        displayAlert('state switching error - todo item', 'danger');
+    }
+}
+function toggleItemState (e) {
+    const element = e.currentTarget.parentElement.previousElementSibling.previousElementSibling;
+    console.log(element);
 }
 
 function activeFilter() {

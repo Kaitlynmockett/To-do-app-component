@@ -106,7 +106,6 @@ input {
       -ms-flex-pack: justify;
           justify-content: space-between;
   text-transform: capitalize;
-  padding-left: 10px;
 }
 
 .todo-item:hover {
