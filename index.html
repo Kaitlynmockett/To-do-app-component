@@ -7,6 +7,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="styles.css">
 
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
   <title>Frontend Mentor | Todo app</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -16,28 +20,59 @@
   </style>
 </head>
 <body>
-<div class="page-wrapper">
-  <div class="title">Todo</div>
+  <!--image banner-->
+  <div class="page-wrapper bg-img">
+    <section class="section">
+      
+      <!-- to do app starts-->
+      <div class="section-center">
+        
+        <!--to do form-->
+        <form class="todo-form">
+          <p class="alert"></p>
+          <div class="header">
+            <h1 class="title">
+              Todo
+            </h1>
+            <button type="button"class="toggle-light-mode btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"><path fill="#FFF" fill-rule="evenodd" d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z"/></svg>
+            </button>
+          </div>
+          <div class="form-control">
+            <button type="button" class="toggle-state-btn far fa-circle"></button>
+            <input type="text" id="to-do" placeholder="Create a new to do...">
+          </div>
+        </form>
 
-    <div><!-- Add dynamic number --> items left</div>
-  <div>
-    <ul> 
-      <li>All</li>
-      <li>Active</li>
-      <li>Completed</li>
+        <!--to do list-->
+        <div class="todo-container">
+          <div class="todo-list">
+            <!-- dynamic items to be added-->
+         
+          </div>
+          <div class="desktop-btn-container">
+            <div class="btn-container">
+                <div class="items-active"></div> 
+                <button type="button" class="clear-btn btn">
+                  Clear Completed
+                </button>
+            </div>
+            <div class="btn-container">
+              <button type="button" class="all-btn btn filter-btn" data-id="all">All</button>
+              <button type="button" class="active-btn btn filter-btn" data-id="active">Active</button>
+              <button type="button" class="completed-btn btn filter-btn" data-id="completed">Completed</button>
+        
+            </div>
+        </div>
+      
+        </div>
+        <div class="attribution">
+          Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+          Coded by <a href="#">Kaitlyn Mockett</a>.
+        </div>
+      </div>
+    </section>
   </div>
-
-  <div>
-    Clear 
-    Completed
-  </div>
-    
-
-
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Kaitlyn</a>.
-  </div>
-</div>
+  <script src="./app.js"></script>
 </body>
 </html>
