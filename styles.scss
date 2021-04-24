@@ -47,6 +47,7 @@ h1 {
     border: transparent;
     font-size: 16px;
     cursor: pointer;
+    font-family: 'Josefin Sans', sans-serif;
 }
 .btn-container {
     display: flex;
@@ -77,6 +78,7 @@ input {
     align-items: center;
     justify-content: space-between;
     text-transform: capitalize;
+    padding-left: 10px;
 }
 
 .todo-item:hover{
@@ -138,5 +140,6 @@ input {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        padding-left: 10px;
     }
 }
